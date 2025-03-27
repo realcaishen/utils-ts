@@ -155,7 +155,7 @@ export function normalizeHex(s: string, len: number) {
 
 export async function runCommand(command: string): Promise<void> {
     await new Promise<void>((resolve) => {
-        const process = exec(command, () => {
+        exec(command, () => {//const process = 
             // Simply resolve once the command completes, regardless of success or failure.
             resolve();
         });
