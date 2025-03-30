@@ -1,1 +1,1 @@
-export * from "./util"
+export * as util from './util';

@@ -1,7 +1,4 @@
 import axios from 'axios';
-import { exec } from 'child_process';
-import * as fs from 'fs';
-import * as fsp from 'fs/promises';
 
 export function equalFold(value1: string, value2: string): boolean {
     if (typeof value1 !== 'string' || typeof value2 !== 'string') {
@@ -153,23 +150,6 @@ export function normalizeHex(s: string, len: number) {
 }
 
 
-export async function runCommand(command: string): Promise<void> {
-    await new Promise<void>((resolve) => {
-        exec(command, () => {//const process = 
-            // Simply resolve once the command completes, regardless of success or failure.
-            resolve();
-        });
-    });
-}
-
-export async function fileExists(filePath: string): Promise<boolean> {
-    try {
-        await fsp.access(filePath, fs.constants.F_OK);
-        return true; // File exists
-    } catch {
-        return false; // File does not exist or is inaccessible
-    }
-}
 
 export function toFloat(value: any): number {
     if (typeof value === "number") {
